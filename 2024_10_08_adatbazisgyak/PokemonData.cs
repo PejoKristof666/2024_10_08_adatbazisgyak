@@ -11,6 +11,6 @@ namespace _2024_10_08_adatbazisgyak
         public static List<PokemonData> pokemonList = new List<PokemonData>();
         public int id { get; set; }
         public string name { get; set; }
-        public int point { get; set; }
+        public int Tpoint { get; set; }
     }
 }

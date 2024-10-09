@@ -35,19 +35,23 @@ namespace _2024_10_08_adatbazisgyak
                 string query = $"SELECT * FROM {tableName}";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 MySqlDataReader read = command.ExecuteReader();
+                PokemonData.pokemonList.Clear();
                 while (read.Read())
                 {
                     PokemonData data = new PokemonData();
                     int id = read.GetInt32(read.GetOrdinal("id"));
                     string name = read.GetString(read.GetOrdinal("name"));
-                    int point = read.GetInt32(read.GetOrdinal("point"));
+                    int Tpoint = read.GetInt32(read.GetOrdinal("Tpoint"));
+
+                    data.name = name;
+                    data.Tpoint = Tpoint;
 
                     PokemonData.pokemonList.Add(data);
                 }
                 read.Close();
                 command.Dispose();
                 connection.Close();
-                MessageBox.Show("hehehe");
+                //MessageBox.Show("hehehe");
             }
             catch (Exception e)
             {
@@ -66,7 +70,7 @@ namespace _2024_10_08_adatbazisgyak
                 command.ExecuteNonQuery();
                 command.Dispose();
                 connection.Close();
-                MessageBox.Show("you got deleted");
+                //MessageBox.Show("you got deleted");
             }
             catch (Exception e)
             {
@@ -85,7 +89,7 @@ namespace _2024_10_08_adatbazisgyak
                 command.ExecuteNonQuery();
                 command.Dispose();
                 connection.Close();
-                MessageBox.Show("Thanos snapped");
+                //MessageBox.Show("Thanos snapped");
             }
             catch (Exception e)
             {
@@ -99,12 +103,12 @@ namespace _2024_10_08_adatbazisgyak
             try
             {
                 connection.Open();
-                string query = $"INSERT INTO {tableName} (name,point)" + $"VALUES ('{onePokemon.name}','{onePokemon.point}')";
+                string query = $"INSERT INTO {tableName} (name,Tpoint)" + $"VALUES ('{onePokemon.name}','{onePokemon.Tpoint}')";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.ExecuteNonQuery();
                 command.Dispose();
                 connection.Close();
-                MessageBox.Show("eggyel tobb cigo");
+                //MessageBox.Show("eggyel tobb cigo");
             }
             catch (Exception e)
             {
